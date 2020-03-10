@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/RogerXiao0718/gauss_solution/issues"
   },
-  "homepage": "https://github.com/RogerXiao0718/gauss_solution#readme"
+  "homepage": "https://github.com/RogerXiao0718/gauss_solution#readme",
+  "devDependencies": {
+    "eslint": "^6.8.0"
+  }
 }

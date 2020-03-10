@@ -1,0 +1,19 @@
+{
+  "name": "gauss_solution",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RogerXiao0718/gauss_solution.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RogerXiao0718/gauss_solution/issues"
+  },
+  "homepage": "https://github.com/RogerXiao0718/gauss_solution#readme"
+}

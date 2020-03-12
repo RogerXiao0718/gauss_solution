@@ -1,4 +1,3 @@
-const ask = require("./ask.js");
 const readline = require("readline");
 
 function gauss_solution() {
@@ -24,6 +23,19 @@ function gauss_solution() {
   });
 }
 
+const ask = async function() {
+  return new Promise((resolve, reject) => {
+    const rl = readline.createInterface({
+      input: process.stdin,
+      output: process.stdout
+    });
+    rl.question("Enter a list of number(space seperated): ", function(answer) {
+      rl.close();
+      resolve(answer);
+    });
+  });
+};
+
 async function getAugMatrix() {
   let userInput;
   let augMatrix = [];
@@ -42,7 +54,7 @@ async function getAugMatrix() {
 }
 
 function rowInterchange(matrix, row1, row2) {
-  const temp = matrix(row1);
+  const temp = matrix[row1];
   matrix[row1] = matrix[row2];
   matrix[row2] = temp;
   return matrix;

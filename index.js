@@ -3,9 +3,11 @@ const readline = require("readline");
 function gauss_solution() {
   //main function
   getAugMatrix().then(augMatrix => {
+    augMatrix = arrangMatrix(augMatrix);
     for (
       let rowPointer = 0, colPointer = 0;
-      rowPointer < augMatrix.length;
+      rowPointer < augMatrix.length &&
+      !augMatrix[rowPointer].every(val => val === 0);
       rowPointer++, colPointer++
     ) {
       for (
@@ -53,6 +55,16 @@ async function getAugMatrix() {
   }
   return augMatrix;
 }
+function arrangMatrix(matrix) {
+  //將全為0的列踢下去
+  let zeroMatrix = matrix.filter(arr => {
+    return arr.every(val => val === 0);
+  });
+  let notZeroMatrix = matrix.filter(arr => {
+    return !arr.every(val => val === 0);
+  });
+  return [...notZeroMatrix, ...zeroMatrix];
+}
 
 function rowInterchange(matrix, row1, row2) {
   const temp = matrix[row1];
@@ -62,6 +74,7 @@ function rowInterchange(matrix, row1, row2) {
 }
 
 function simplifyMatrix(matrix, rowPointer, colPointer) {
+  if (matrix[rowPointer][colPointer] === 0) return matrix;
   //讓陣列的某一列出現 引導係數 1
   matrix[rowPointer] = matrix[rowPointer].map(val => {
     return val / matrix[rowPointer][colPointer];

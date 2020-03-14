@@ -1,6 +1,7 @@
 const readline = require("readline");
 
 function gauss_solution() {
+  //main function
   getAugMatrix().then(augMatrix => {
     for (
       let rowPointer = 0, colPointer = 0;

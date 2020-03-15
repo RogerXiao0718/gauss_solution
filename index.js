@@ -10,9 +10,6 @@ function gauss_solution() {
       !augMatrix[rowPointer].every(val => val === 0);
       rowPointer++, colPointer++
     ) {
-      while (augMatrix[rowPointer][colPointer] === 0) {
-        colPointer++;
-      }
       for (
         let i = rowPointer + 1;
         augMatrix[rowPointer][colPointer] === 0 && i < augMatrix.length;
@@ -22,6 +19,9 @@ function gauss_solution() {
           augMatrix = rowInterchange(augMatrix, rowPointer, i);
           break;
         } //將列調換使augMatrix[rowPointer][colPointer]為引導係數
+      }
+      while (augMatrix[rowPointer][colPointer] === 0) {
+        colPointer++;
       }
       augMatrix = simplifyMatrix(augMatrix, rowPointer, colPointer);
       augMatrix = arrangeMatrix(augMatrix);
@@ -98,6 +98,14 @@ function printMatrix(matrix) {
   console.log(
     matrix
       .map(val => {
+        //return val.join(" ");
+        val = val.map(el => {
+          if (!Number.isInteger(el)) {
+            return el.toFixed(2);
+          } else {
+            return el;
+          }
+        });
         return val.join(" ");
       })
       .join("\n")

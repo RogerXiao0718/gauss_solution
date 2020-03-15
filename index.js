@@ -52,7 +52,11 @@ async function getAugMatrix() {
       let userInputArray = userInput.split(" ");
       augMatrix.push(
         userInputArray.map(val => {
-          return parseInt(val);
+          //將使用者輸入的數轉成整數或浮點數
+          val = parseFloat(val);
+          if (val % 1 === 0) {
+            return parseInt(val);
+          } else return val;
         })
       );
     }
@@ -101,6 +105,7 @@ function printMatrix(matrix) {
         //return val.join(" ");
         val = val.map(el => {
           if (!Number.isInteger(el)) {
+            //取到小數點第二位
             return el.toFixed(2);
           } else {
             return el;

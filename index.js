@@ -3,13 +3,16 @@ const readline = require("readline");
 function gauss_solution() {
   //main function
   getAugMatrix().then(augMatrix => {
-    augMatrix = arrangMatrix(augMatrix);
+    augMatrix = arrangeMatrix(augMatrix);
     for (
       let rowPointer = 0, colPointer = 0;
       rowPointer < augMatrix.length &&
       !augMatrix[rowPointer].every(val => val === 0);
       rowPointer++, colPointer++
     ) {
+      while (augMatrix[rowPointer][colPointer] === 0) {
+        colPointer++;
+      }
       for (
         let i = rowPointer + 1;
         augMatrix[rowPointer][colPointer] === 0 && i < augMatrix.length;
@@ -21,6 +24,7 @@ function gauss_solution() {
         } //將列調換使augMatrix[rowPointer][colPointer]為引導係數
       }
       augMatrix = simplifyMatrix(augMatrix, rowPointer, colPointer);
+      augMatrix = arrangeMatrix(augMatrix);
     }
     printMatrix(augMatrix);
   });
@@ -55,7 +59,7 @@ async function getAugMatrix() {
   }
   return augMatrix;
 }
-function arrangMatrix(matrix) {
+function arrangeMatrix(matrix) {
   //將全為0的列踢下去
   let zeroMatrix = matrix.filter(arr => {
     return arr.every(val => val === 0);

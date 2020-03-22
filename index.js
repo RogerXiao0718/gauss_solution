@@ -1,7 +1,7 @@
 const readline = require("readline");
 
 function gauss_solution() {
-  //main function
+  //主程式
   getAugMatrix().then(augMatrix => {
     augMatrix = arrangeMatrix(augMatrix);
     for (
